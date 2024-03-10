@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multiview Weather Wall</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .weather-wall {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      width: 100%;
+      height: 100%;
+    }
+    .weather-frame {
+      border: none;
+      position: relative;
+      width: 960px;
+      height: 540px;
+    }
+    .weather-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <div class="weather-wall">
+    <div class="weather-frame">
+      <img src="file:///C:/Users/jnels/Desktop/weather_image.png" alt="NWS GTWO_ATL">
+    </div>
+    <div class="weather-frame">
+      <img src="file:///C:/Users/jnels/Desktop/TropicalATL13EnhIR.gif" alt="TATL13ENH">
+    </div>
+    <div class="weather-frame">
+      <iframe id="iframe1" src="local_file_3.html" frameborder="0"></iframe>
+    </div>
+    <div class="weather-frame">
+      <img src="file:///C:/Users/jnels/Desktop/TropicalATL13CleanIR.gif" alt="TATL13CLEAN">
+    </div>
+  </div>
+
+  <script>
+    // Function to reload iframes every 10 minutes
+    function reloadIframes() {
+      // Get all iframe elements
+      var iframes = document.querySelectorAll('iframe');
+      
+      // Loop through each iframe
+      for (var i = 0; i < iframes.length; i++) {
+        // Reload the iframe
+        iframes[i].contentWindow.location.reload(true);
+      }
+    }
+    
+    // Call reloadIframes function every 10 minutes
+    setInterval(reloadIframes, 10 * 60 * 1000);
+  </script>
+</body>
+</html>
